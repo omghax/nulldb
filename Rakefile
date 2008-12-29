@@ -1,26 +1,17 @@
 require 'rubygems'
 require 'hoe'
-require 'rake'
-require 'rake/rdoctask'
-require 'spec/rake/spectask'
 
 Hoe.new('nulldb', '0.0.1') do |p|
   p.developer 'Avdi Grimm', 'avdi@avdi.org'
   p.extra_deps << ['activerecord']
-end
 
-desc "Run all examples"
-Spec::Rake::SpecTask.new('spec') do |t|
-  t.spec_files = FileList['spec/**/*_spec.rb']
-end
-
-Rake::RDocTask.new do |rd|
-  rd.main = "README"
-  rd.rdoc_files.include("README", "LICENSE", "lib/**/*.rb")
+  # Use RSpec for testing.
+  p.testlib = 'spec'
+  p.test_globs = 'spec/**/*_spec.rb'
 end
 
 desc "Publish project home page"
-task :publish => ["rdoc"] do
+task :publish => :redocs do
   sh "rsync --recursive html/* avdi.org:avdi.org/projects/nulldb/"
 end
 
