@@ -1,6 +1,11 @@
-= The NullDB Connection Adapter Plugin
+= NullDB
 
-== What
+NullDB was written by Avdi Grimm <mailto:avdi@avdi.org>
+
+* Homepage: http://avdi.org/projects/nulldb/
+* Public SVN: http://svn.avdi.org/nulldb/
+
+== DESCRIPTION:
 
 NullDB is the Null Object pattern as applied to ActiveRecord database
 adapters.  It is a database backend that translates database
@@ -8,7 +13,16 @@ interactions into no-ops.  Using NullDB enables you to test your model
 business logic - including +after_save+ hooks - without ever touching
 a real database.
 
-== How 
+== FEATURES/PROBLEMS:
+
+* It is *not* an in-memory database.  Finds will not work.  Neither
+  will +reload+, currently.  Test fixtures won't work either, for
+  obvious reasons.
+* It has only the most rudimentery schema/migration support.  Complex
+  migrations will probably break it.
+* Lots of other things probably don't work.  Patches welcome!
+
+== SYNOPSIS:
 
 Once installed, NullDB can be used much like any other ActiveRecord
 database adapter:
@@ -77,7 +91,7 @@ into its standard Rake tasks, you may find that this generates
 unexpected and difficult-to-debug behavior.  Workarounds for this are
 under development.
 
-== Why 
+== WHY:
 
 There are a number of advantages to writing unit tests that never
 touch the database.  The biggest is probably speed of execution - unit
@@ -112,29 +126,6 @@ is possible with NullDB to test +after_save+ hooks.  With NullDB, you
 can call +#save+ and all of the usual callbacks will be called - but
 nothing will be saved.
 
-== Limitations
-
-* It is *not* an in-memory database.  Finds will not work.  Neither
-  will +reload+, currently.  Test fixtures won't work either, for
-  obvious reasons.
-* It has only the most rudimentery schema/migration support.  Complex
-  migrations will probably break it.
-* Lots of other things probably don't work.  Patches welcome!
-
-== Who 
-
-NullDB was written by Avdi Grimm <mailto:avdi@avdi.org>
-
-== Where
-
-* Homepage: http://avdi.org/projects/nulldb/
-* Public SVN: http://svn.avdi.org/nulldb/
-
-== Changes
-
- * Version 0.0.1 (2007-02-18)
-   - Initial Release
-
-== License
+== LICENSE:
 
 See the LICENSE file for licensing information.

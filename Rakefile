@@ -1,6 +1,13 @@
+require 'rubygems'
+require 'hoe'
 require 'rake'
 require 'rake/rdoctask'
 require 'spec/rake/spectask'
+
+Hoe.new('nulldb', '0.0.1') do |p|
+  p.developer 'Avdi Grimm', 'avdi@avdi.org'
+  p.extra_deps << ['activerecord']
+end
 
 desc "Run all examples"
 Spec::Rake::SpecTask.new('spec') do |t|

@@ -1,0 +1,11 @@
+History.txt
+LICENSE
+Manifest.txt
+README.txt
+Rakefile
+init.rb
+lib/active_record/connection_adapters/nulldb_adapter.rb
+lib/nulldb_rspec.rb
+nulldb.gemspec
+spec/nulldb_spec.rb
+tasks/database.rake
